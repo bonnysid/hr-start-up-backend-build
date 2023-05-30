@@ -1,0 +1,2027 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "InvestApp",
+        "description": "Документация"
+    },
+    "servers": [
+        {
+            "url": "http://45.9.43.5:5000/",
+            "description": "Dev"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Административная панель"
+        },
+        {
+            "name": "Авторизация"
+        },
+        {
+            "name": "Теги"
+        },
+        {
+            "name": "Пользователи"
+        },
+        {
+            "name": "Диалоги"
+        },
+        {
+            "name": "Посты"
+        },
+        {
+            "name": "Жалобы"
+        }
+    ],
+    "paths": {
+        "/admin/login": {
+            "post": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "description": "Форма для авторизации",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "example": {
+                                        "accessToken": "string",
+                                        "refreshToken": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/users/create": {
+            "post": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUser"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/roles/create": {
+            "post": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RoleCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Role"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/roles": {
+            "get": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Role"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/tags/create": {
+            "post": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TagCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Tag"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tags": {
+            "get": {
+                "tags": [
+                    "Теги"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Tag"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/tags/{id}": {
+            "put": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TagCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/users/ban/{id}": {
+            "post": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/users/unban/{id}": {
+            "post": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/posts/ban/{id}": {
+            "post": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/posts/unban/{id}": {
+            "post": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/roles/{id}": {
+            "put": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RoleCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Авторизация"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Tokens"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/registration": {
+            "post": {
+                "tags": [
+                    "Авторизация"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Registration"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Tokens"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/refresh": {
+            "post": {
+                "tags": [
+                    "Авторизация"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Refresh"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Tokens"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/logout": {
+            "post": {
+                "tags": [
+                    "Авторизация"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/auth/logout/session": {
+            "post": {
+                "tags": [
+                    "Авторизация"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LogoutSession"
+                            }
+                        }
+                    }
+                },
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Пользователи"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/users": {
+            "get": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/AdminUser"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/avatar": {
+            "post": {
+                "tags": [
+                    "Пользователи"
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AvatarUpload"
+                            }
+                        }
+                    }
+                },
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/change/password": {
+            "post": {
+                "tags": [
+                    "Пользователи"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserChangePassword"
+                            }
+                        }
+                    }
+                },
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/users/change/info": {
+            "post": {
+                "tags": [
+                    "Пользователи"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserChangeInfo"
+                            }
+                        }
+                    }
+                },
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserChangeInfoResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/change/email": {
+            "post": {
+                "tags": [
+                    "Пользователи"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChangeEmail"
+                            }
+                        }
+                    }
+                },
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/users/change/email/confirm": {
+            "post": {
+                "tags": [
+                    "Пользователи"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConfirmEmail"
+                            }
+                        }
+                    }
+                },
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/users/email/send/code": {
+            "post": {
+                "tags": [
+                    "Пользователи"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/users/email/confirm": {
+            "post": {
+                "tags": [
+                    "Пользователи"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConfirmEmail"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/users/me": {
+            "get": {
+                "tags": [
+                    "Пользователи"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "Пользователи"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/sessions": {
+            "get": {
+                "tags": [
+                    "Пользователи"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Session"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/posts": {
+            "get": {
+                "tags": [
+                    "Посты"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/PostList"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/complaints": {
+            "get": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/AdminComplaint"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/complaints/{id}": {
+            "get": {
+                "tags": [
+                    "Жалобы"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ComplaintDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/complaints/my": {
+            "get": {
+                "tags": [
+                    "Жалобы"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Complaint"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/complaints/post": {
+            "post": {
+                "tags": [
+                    "Жалобы"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ComplaintPostCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Complaint"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/complaints/user": {
+            "post": {
+                "tags": [
+                    "Жалобы"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ComplaintUserCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Complaint"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/complaints/resolve/{id}": {
+            "post": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/complaints/close/{id}": {
+            "post": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/complaints/unresolve/{id}": {
+            "post": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/posts/user/{userId}": {
+            "get": {
+                "tags": [
+                    "Посты"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/PostList"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/posts/me": {
+            "get": {
+                "tags": [
+                    "Посты"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/PostList"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/posts/{id}": {
+            "get": {
+                "tags": [
+                    "Посты"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Посты"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Посты"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PostEdit"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostDetail"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/posts/favorite/{id}": {
+            "post": {
+                "tags": [
+                    "Посты"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/posts/comment": {
+            "post": {
+                "tags": [
+                    "Посты"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateComment"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comment"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/posts/comment/{id}": {
+            "put": {
+                "tags": [
+                    "Посты"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "text": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comment"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Посты"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/posts/unfavorite/{id}": {
+            "post": {
+                "tags": [
+                    "Посты"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/posts/favorites": {
+            "get": {
+                "tags": [
+                    "Посты"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/PostList"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dialogs": {
+            "get": {
+                "tags": [
+                    "Диалоги"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/DialogListItem"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dialogs/{id}": {
+            "get": {
+                "tags": [
+                    "Диалоги"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/DialogInfo"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dialogs/create": {
+            "post": {
+                "tags": [
+                    "Диалоги"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDialog"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/DialogInfo"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/posts": {
+            "get": {
+                "tags": [
+                    "Административная панель"
+                ],
+                "summary": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/PostList"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/posts/create": {
+            "post": {
+                "tags": [
+                    "Посты"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PostCreateTest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "success": "true",
+                                    "videoUrl": "string",
+                                    "id": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Login": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ChangeEmail": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ConfirmEmail": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Refresh": {
+                "type": "object",
+                "properties": {
+                    "refreshToken": {
+                        "type": "string"
+                    }
+                }
+            },
+            "LogoutSession": {
+                "type": "object",
+                "properties": {
+                    "sessionId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Session": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "ip": {
+                        "type": "string"
+                    },
+                    "isCurrent": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "CreateUser": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "roles": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "CreateDialog": {
+                "type": "object",
+                "properties": {
+                    "text": {
+                        "type": "string"
+                    },
+                    "userId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Registration": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "roles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Role"
+                        }
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "isConfirmedEmail": {
+                        "type": "boolean"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "avatar": {
+                        "type": "string"
+                    }
+                }
+            },
+            "AdminUser": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "roles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Role"
+                        }
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "isConfirmedEmail": {
+                        "type": "boolean"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "avatar": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Tokens": {
+                "type": "object",
+                "properties": {
+                    "accessToken": {
+                        "type": "string"
+                    },
+                    "refreshToken": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Role": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            },
+            "RoleCreate": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserChangeInfo": {
+                "type": "object",
+                "properties": {
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserChangeInfoResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/User"
+                    }
+                }
+            },
+            "UserChangePassword": {
+                "type": "object",
+                "properties": {
+                    "password": {
+                        "type": "string"
+                    },
+                    "newPassword": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Tag": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserComment": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "avatar": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Comment": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "text": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserComment"
+                    }
+                }
+            },
+            "CreateComment": {
+                "type": "object",
+                "properties": {
+                    "postId": {
+                        "type": "string"
+                    },
+                    "text": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PostDetail": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "banReason": {
+                        "$ref": "#/components/schemas/BanReason"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "isFavorite": {
+                        "type": "boolean"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "views": {
+                        "type": "number"
+                    },
+                    "commentsCount": {
+                        "type": "number"
+                    },
+                    "favoriteCount": {
+                        "type": "number"
+                    },
+                    "shortDescription": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "videoUrl": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Tag"
+                        }
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/User"
+                    },
+                    "comments": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Comment"
+                        }
+                    }
+                }
+            },
+            "Message": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "dialogId": {
+                        "type": "string"
+                    },
+                    "text": {
+                        "type": "string"
+                    },
+                    "read": {
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserComment"
+                    }
+                }
+            },
+            "ComplaintMessage": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "complaintId": {
+                        "type": "string"
+                    },
+                    "text": {
+                        "type": "string"
+                    },
+                    "read": {
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserComment"
+                    }
+                }
+            },
+            "DialogListItem": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserComment"
+                    },
+                    "lastMessage": {
+                        "$ref": "#/components/schemas/Message"
+                    },
+                    "unreadableMessages": {
+                        "type": "number"
+                    }
+                }
+            },
+            "DialogInfo": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/UserComment"
+                        }
+                    },
+                    "messages": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Message"
+                        }
+                    }
+                }
+            },
+            "PostList": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "isFavorite": {
+                        "type": "boolean"
+                    },
+                    "views": {
+                        "type": "number"
+                    },
+                    "commentsCount": {
+                        "type": "number"
+                    },
+                    "favoriteCount": {
+                        "type": "number"
+                    },
+                    "shortDescription": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "videoUrl": {
+                        "type": "string"
+                    },
+                    "banReason": {
+                        "$ref": "#/components/schemas/BanReason"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Tag"
+                        }
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/User"
+                    }
+                }
+            },
+            "BanReason": {
+                "type": "object",
+                "properties": {
+                    "text": {
+                        "type": "string"
+                    }
+                }
+            },
+            "BanReasonAdmin": {
+                "type": "object",
+                "properties": {
+                    "text": {
+                        "type": "string"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/User"
+                    }
+                }
+            },
+            "AvatarUpload": {
+                "type": "object",
+                "properties": {
+                    "photo": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PostCreate": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "shortDescription": {
+                        "type": "string"
+                    },
+                    "videoUrl": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "PostEdit": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "shortDescription": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "PostComplaintItem": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Complaint": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "unreadableMessages": {
+                        "type": "number"
+                    },
+                    "post": {
+                        "$ref": "#/components/schemas/PostComplaintItem"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserComment"
+                    },
+                    "author": {
+                        "$ref": "#/components/schemas/UserComment"
+                    }
+                }
+            },
+            "ComplaintDetail": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "post": {
+                        "$ref": "#/components/schemas/PostComplaintItem"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserComment"
+                    },
+                    "author": {
+                        "$ref": "#/components/schemas/UserComment"
+                    },
+                    "messages": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ComplaintMessage"
+                        }
+                    }
+                }
+            },
+            "ComplaintPostCreate": {
+                "type": "object",
+                "properties": {
+                    "text": {
+                        "type": "string"
+                    },
+                    "postId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ComplaintUserCreate": {
+                "type": "object",
+                "properties": {
+                    "text": {
+                        "type": "string"
+                    },
+                    "userId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "AdminComplaint": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "post": {
+                        "$ref": "#/components/schemas/PostComplaintItem"
+                    },
+                    "unreadableMessages": {
+                        "type": "number"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserComment"
+                    },
+                    "author": {
+                        "$ref": "#/components/schemas/UserComment"
+                    },
+                    "whoResolve": {
+                        "$ref": "#/components/schemas/UserComment"
+                    }
+                }
+            },
+            "PostCreateTest": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "shortDescription": {
+                        "type": "string"
+                    },
+                    "video": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "TagCreate": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
